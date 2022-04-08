@@ -1,4 +1,6 @@
 def call(Closure body) {
+  body.call()
+  
   pipeline {
     agent any
 
