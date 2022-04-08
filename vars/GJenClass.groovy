@@ -1,9 +1,9 @@
-class gJenClass implements Serializable {
+class GJenClass {
 
   String branchName
 
-  ProjectBranch(String branchName) {
-    this.branchName = Objects.requireNonNull(branchName)
+  GJenClass(String branchName) {
+    this.branchName = branchName
   }
 
   boolean isMaster() {
