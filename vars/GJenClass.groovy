@@ -8,7 +8,5 @@ class GJenClass {
 
   boolean isMaster() {
     branchName == 'master'
-    println "Printing to Console"
-
   }
 }
