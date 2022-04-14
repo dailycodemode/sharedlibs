@@ -11,7 +11,7 @@ class SecurityScan implements Serializable {
     SecurityScan(steps) {
         // echo "SecurityScan-cstr123"
         // sh "echo HelloMe"
-        script.echo("HelloMe")
+        // script.echo("HelloMe")
         println("SecurityScan-cstr")
         this.steps = steps
     }
