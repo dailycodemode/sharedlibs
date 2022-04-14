@@ -68,8 +68,6 @@ def call(type, String product, String component, Closure body) {
   String agentType = env.BUILD_AGENT_TYPE
   println("agentType: " + env.BUILD_AGENT_TYPE)
 
-    dockerAgentSetup()
-    
   node(agentType) {
     println("nodeRunning: " + env.BUILD_AGENT_TYPE)
     timeoutWithMsg(time: 180, unit: 'MINUTES', action: 'pipeline') {
@@ -81,16 +79,16 @@ def call(type, String product, String component, Closure body) {
         env.PATH = "$env.PATH:/usr/local/bin"
         println("env.PATH: " + env.PATH)
 
-        // sectionBuildAndTest(
-        //   appPipelineConfig: pipelineConfig,
-        //   pipelineCallbacksRunner: callbacksRunner,
-        //   builder: pipelineType.builder,
-        //   subscription: subscription.nonProdName,
-        //   environment: environment.nonProdName,
-        //   product: product,
-        //   component: component,
-        //   pactBrokerUrl: environment.pactBrokerUrl
-        // )
+        sectionBuildAndTest(
+          appPipelineConfig: pipelineConfig,
+          pipelineCallbacksRunner: callbacksRunner,
+          builder: pipelineType.builder,
+          subscription: subscription.nonProdName,
+          environment: environment.nonProdName,
+          product: product,
+          component: component,
+          pactBrokerUrl: environment.pactBrokerUrl
+        )
 
       } catch (err) {
           println("Error")
