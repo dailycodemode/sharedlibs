@@ -11,6 +11,7 @@ class Subscription implements Serializable {
 
 
   Subscription(Object env) {
+    println("Subscription-cstr")
     Objects.requireNonNull(env)
 
     nonProdName = env.NONPROD_SUBSCRIPTION_NAME ?: 'nonprod'

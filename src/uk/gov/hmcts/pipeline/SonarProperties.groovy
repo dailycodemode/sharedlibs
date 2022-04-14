@@ -4,6 +4,7 @@ import uk.gov.hmcts.contino.ProjectBranch
 
 class SonarProperties implements Serializable {
   static String get(steps) {
+    println("SonarProperties-get")
     def env = steps.env
 
     boolean onPR = new ProjectBranch(env.BRANCH_NAME).isPR()

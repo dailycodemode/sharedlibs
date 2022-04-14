@@ -18,6 +18,7 @@ class Gatling implements Serializable {
   def steps
 
   Gatling(steps) {
+    println("Gatling-cstr")
     this.steps = steps
     if (this.steps.env == null) {
       this.steps.metaClass.env = [:]
@@ -27,6 +28,7 @@ class Gatling implements Serializable {
   }
 
   def execute() {
+      println("Gatling-execute")
     def gatlingImage =  GATLING_JAVA_11_IMAGE
 
     this.steps.withDocker(gatlingImage, GATLING_RUN_ARGS) {

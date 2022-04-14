@@ -9,10 +9,12 @@ class SecurityScan implements Serializable {
     def steps
 
     SecurityScan(steps) {
+        println("SecurityScan-cstr")
         this.steps = steps
     }
 
     def execute() {
+        println("SecurityScan-execute")
         try {
             this.steps.withDocker(OWASP_ZAP_IMAGE, OWASP_ZAP_ARGS) {
                 this.steps.sh '''

@@ -11,6 +11,7 @@ class YarnBuilder extends AbstractBuilder {
   private static final String CVE_KNOWN_ISSUES_FILE_PATH = 'yarn-audit-known-issues'
 
   YarnBuilder(steps) {
+    println("YarnBuilder-cstr")
     super(steps)
   }
 

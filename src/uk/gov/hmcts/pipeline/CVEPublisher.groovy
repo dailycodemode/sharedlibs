@@ -15,6 +15,7 @@ class CVEPublisher {
   private final boolean ignoreErrors
 
   CVEPublisher(steps, DocumentClient documentClient) {
+    println("CVEPublisher-cstr")
     this(
       steps,
       true,
@@ -23,12 +24,14 @@ class CVEPublisher {
   }
 
   CVEPublisher(steps, ignoreErrors, DocumentClient documentClient) {
+    println("CVEPublisher-cstr")
     this.ignoreErrors = ignoreErrors
     this.steps = steps
     this.documentClient = documentClient
   }
 
   static CVEPublisher create(steps) {
+    println("CVEPublisher-create")
     Subscription subscription = new Subscription(steps.env)
 
     def cosmosDbUrl = steps.env.PIPELINE_METRICS_URL

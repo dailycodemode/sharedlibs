@@ -9,16 +9,19 @@ class GradleBuilder extends AbstractBuilder {
   def product
 
   GradleBuilder(steps, product) {
+    println("GradleBuilder-cstr")
     super(steps)
     this.product = product
   }
 
   def build() {
+    println("GradleBuilder-build")
     addVersionInfo()
     gradle("assemble")
   }
 
   def fortifyScan() {
+    println("GradleBuilder-fortifyScan")
     gradle("fortifyScan")
   }
 
@@ -36,6 +39,7 @@ class GradleBuilder extends AbstractBuilder {
   }
 
   def sonarScan() {
+    println("GradleBuilder-sonarScan")
       String properties = SonarProperties.get(steps)
 
       gradle("--info ${properties} sonarqube")
