@@ -9,8 +9,8 @@ class GradleBuilder extends AbstractBuilder {
   def product
 
   GradleBuilder(steps, product) {
-    println("GradleBuilder-cstr")
     super(steps)
+    println("GradleBuilder-cstr")
     this.product = product
   }
 
