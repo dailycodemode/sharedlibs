@@ -53,42 +53,51 @@ class AppPipelineDsl extends CommonPipelineDsl implements Serializable {
   }
 
   void enableFullFunctionalTest(int timeout = 30) {
+    println("AppPipelineDsl-enableFullFunctionalTest")
     config.fullFunctionalTestTimeout = timeout
     config.fullFunctionalTest = true
   }
 
   void enableMutationTest(int timeout = 120) {
+    println("AppPipelineDsl-enableMutationTest")
     config.mutationTestTimeout = timeout
     config.mutationTest = true
   }
 
   void disableLegacyDeployment() {
+    println("AppPipelineDsl-disableLegacyDeployment")
     config.legacyDeployment = false
   }
 
   void disableLegacyDeploymentOnAAT() {
+    println("AppPipelineDsl-disableLegacyDeploymentOnAAT")
     config.legacyDeploymentExemptions.add("aat")
   }
 
   void nonServiceApp() {
+    println("AppPipelineDsl-nonServiceApp")
     config.serviceApp = false
   }
 
   void overrideVaultEnvironments(Map<String, String> vaultOverrides) {
+    println("AppPipelineDsl-overrideVaultEnvironments")
     config.vaultEnvironmentOverrides = vaultOverrides
   }
 
   void enableAksStagingDeployment() {
+    println("AppPipelineDsl-enableAksStagingDeployment")
     config.aksStagingDeployment = true
   }
 
   void enableCleanupOfHelmReleaseOnSuccess() {
+    println("AppPipelineDsl-enableCleanupOfHelmReleaseOnSuccess")
     config.clearHelmRelease = true;
   }
 
   enum PactRoles { CONSUMER, PROVIDER, CONSUMER_DEPLOY_CHECK}
 
   void enablePactAs(List<PactRoles> roles) {
+    println("AppPipelineDsl-enablePactAs")
     config.pactBrokerEnabled = true
     config.pactConsumerTestsEnabled = roles.contains(PactRoles.CONSUMER)
     config.pactProviderVerificationsEnabled = roles.contains(PactRoles.PROVIDER)
@@ -96,10 +105,12 @@ class AppPipelineDsl extends CommonPipelineDsl implements Serializable {
   }
 
   void enableHighLevelDataSetup() {
+    println("AppPipelineDsl-enableHighLevelDataSetup")
     config.highLevelDataSetup = true
   }
 
   void enableFortifyScan(String fortifyVaultName = "") {
+    println("AppPipelineDsl-enableFortifyScan")
     config.fortifyScan = true
     config.fortifyVaultName = fortifyVaultName
   }
