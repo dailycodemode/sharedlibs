@@ -6,9 +6,12 @@ import uk.gov.hmcts.contino.AngularPipelineType
 import uk.gov.hmcts.contino.PipelineType
 
 import uk.gov.hmcts.contino.MetricsPublisher
-import uk.gov.hmcts.contino.AppPipelineConfig
 import uk.gov.hmcts.contino.Subscription
 import uk.gov.hmcts.pipeline.AKSSubscriptions
+
+import uk.gov.hmcts.contino.AppPipelineConfig
+import uk.gov.hmcts.contino.PipelineCallbacksConfig
+import uk.gov.hmcts.contino.PipelineCallbacksRunner
 
 def call(type, String product, String component, Closure body) {
 
@@ -39,6 +42,8 @@ def call(type, String product, String component, Closure body) {
 
   MetricsPublisher metricsPublisher = new MetricsPublisher(this, currentBuild, product, component, subscription.prodName )
   def pipelineConfig = new AppPipelineConfig()
+  def callbacks = new PipelineCallbacksConfig()
+  def callbacksRunner = new PipelineCallbacksRunner(callbacks)
 
   println("withPipeline-call-END")
 
