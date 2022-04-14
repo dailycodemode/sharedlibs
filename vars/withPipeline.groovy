@@ -5,6 +5,8 @@ import uk.gov.hmcts.contino.AngularPipelineType
 
 import uk.gov.hmcts.contino.PipelineType
 
+import uk.gov.hmcts.contino.MetricsPublisher
+import uk.gov.hmcts.contino.AppPipelineConfig
 import uk.gov.hmcts.contino.Subscription
 import uk.gov.hmcts.pipeline.AKSSubscriptions
 
