@@ -57,6 +57,7 @@ class TeamConfig {
 
 
   def getName (String product) {
+    println("setTeamConfigEnv-getName")
     def teamNames = getTeamNamesMap()
     product = getRawProductName(product)
     if (!teamNames.containsKey(product)) {
@@ -66,10 +67,12 @@ class TeamConfig {
   }
 
   def getRawProductName(String product) {
+    println("setTeamConfigEnv-getRawProductName")
     return product.startsWith('pr-') ? product.split('pr-(\\d+)-')[1] : product
   }
 
   def getNameSpace(String product) {
+    println("setTeamConfigEnv-getNameSpace")
     def teamNames = getTeamNamesMap()
     if (product.startsWith('pr-')) {
       product = getRawProductName(product)
@@ -87,6 +90,7 @@ class TeamConfig {
   }
 
   def getDefaultTeamSlackChannel(String product, String key) {
+    println("setTeamConfigEnv-getDefaultTeamSlackChannel")
     def teamNames = getTeamNamesMap()
     if (!teamNames.containsKey(product) || !teamNames.get(product).get(SLACK_KEY) || !teamNames.get(product).get(SLACK_KEY).get(key)) {
       def repo = steps.env.JENKINS_CONFIG_REPO ?: "cnp-jenkins-config"
@@ -98,15 +102,18 @@ class TeamConfig {
   }
 
   def getBuildNoticesSlackChannel(String product) {
+    println("setTeamConfigEnv-getBuildNoticesSlackChannel")
       String slackChannel = this.steps.env.BUILD_NOTICE_SLACK_CHANNEL
       return slackChannel != null && !slackChannel.isEmpty() ? slackChannel : getDefaultTeamSlackChannel(product,BUILD_NOTICES_CHANNEL_KEY)
   }
 
   def getContactSlackChannel(String product) {
+    println("setTeamConfigEnv-getContactSlackChannel")
     return getDefaultTeamSlackChannel(getRawProductName(product),CONTACT_SLACK_CHANNEL_KEY)
   }
 
   String getBuildAgentType(String product) {
+    println("setTeamConfigEnv-getBuildAgentType")
     def teamNames = getTeamNamesMap()
     def rawProductName = getRawProductName(product)
     if (!teamNames.containsKey(rawProductName) || !teamNames.get(rawProductName).get(AGENT_KEY)) {
@@ -117,19 +124,23 @@ class TeamConfig {
   }
 
   boolean isDockerBuildAgent(String agentLabel) {
+    println("setTeamConfigEnv-isDockerBuildAgent")
     return agentLabel == DOCKER_AGENT_LABEL
   }
 
   String getBuildAgentContainer(String agentLabel) {
+    println("setTeamConfigEnv-getBuildAgentContainer")
     return isDockerBuildAgent(agentLabel) ? CONTAINER_AGENT : ""
   }
 
   String getContainerRegistry(String product) {
+    println("setTeamConfigEnv-getContainerRegistry")
     def teamNames = getTeamNamesMap()
     return teamNames.containsKey(product) && teamNames.get(product).get(REGISTRY_KEY) ? teamNames.get(product).get(REGISTRY_KEY) : ""
   }
 
   String getApplicationTag(String product) {
+    println("setTeamConfigEnv-getApplicationTag")
     def teamNames = getTeamNamesMap()
     if (!teamNames.containsKey(product) || !teamNames.get(product).get(TAGS_KEY) || !teamNames.get(product).get(TAGS_KEY).get(APPLICATION_KEY)) {
       def repo = steps.env.JENKINS_CONFIG_REPO ?: "cnp-jenkins-config"
