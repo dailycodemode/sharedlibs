@@ -66,7 +66,55 @@ def call(type, String product, String component, Closure body) {
 
 //   def teamConfig = new TeamConfig(this).setTeamConfigEnv(product)
   String agentType = env.BUILD_AGENT_TYPE
-  println("agentType: " + agentType)
+  println("agentType: " + env.BUILD_AGENT_TYPE)
+
+
+  node(agentType) {
+    println("nodeRunning: " + env.BUILD_AGENT_TYPE)
+    timeoutWithMsg(time: 180, unit: 'MINUTES', action: 'pipeline') {
+    //   def slackChannel = env.BUILD_NOTICES_SLACK_CHANNEL
+      try {
+          println("RunningWithPipeline")
+        // dockerAgentSetup()
+        // env.PATH = "$env.PATH:/usr/local/bin"
+
+        // sectionBuildAndTest(
+        //   appPipelineConfig: pipelineConfig,
+        //   pipelineCallbacksRunner: callbacksRunner,
+        //   builder: pipelineType.builder,
+        //   subscription: subscription.nonProdName,
+        //   environment: environment.nonProdName,
+        //   product: product,
+        //   component: component,
+        //   pactBrokerUrl: environment.pactBrokerUrl
+        // )
+
+      } catch (err) {
+          println("Error")
+    //     if (err.message != null && err.message.startsWith('AUTO_ABORT')) {
+    //       currentBuild.result = 'ABORTED'
+    //       metricsPublisher.publish(err.message)
+    //       return
+    //     } else {
+    //       currentBuild.result = "FAILURE"
+    //       notifyBuildFailure channel: slackChannel
+    //       metricsPublisher.publish('Pipeline Failed')
+    //     }
+    //     callbacksRunner.call('onFailure')
+    //     throw err
+    //   } finally {
+    //     notifyPipelineDeprecations(slackChannel, metricsPublisher)
+    //     if (env.KEEP_DIR_FOR_DEBUGGING != "true") {
+    //       deleteDir()
+    //     }
+      }
+
+      notifyBuildFixed channel: slackChannel
+
+      callbacksRunner.call('onSuccess')
+      metricsPublisher.publish('Pipeline Succeeded')
+    }
+  }
 
   println("withPipeline-call-END")
 
