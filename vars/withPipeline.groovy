@@ -68,7 +68,8 @@ def call(type, String product, String component, Closure body) {
   String agentType = env.BUILD_AGENT_TYPE
   println("agentType: " + env.BUILD_AGENT_TYPE)
 
-
+    dockerAgentSetup()
+    
   node(agentType) {
     println("nodeRunning: " + env.BUILD_AGENT_TYPE)
     timeoutWithMsg(time: 180, unit: 'MINUTES', action: 'pipeline') {
