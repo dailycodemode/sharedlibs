@@ -8,6 +8,7 @@ public class NodePipelineType implements PipelineType, Serializable {
   Builder builder
 
   NodePipelineType(steps, product, app) {
+    println("NodePipelineType-cstr")
     this.steps = steps
     this.product = product
     this.app = app

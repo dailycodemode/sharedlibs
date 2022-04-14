@@ -1,4 +1,7 @@
 import uk.gov.hmcts.contino.ProjectBranch
+import uk.gov.hmcts.contino.SpringBootPipelineType
+import uk.gov.hmcts.contino.NodePipelineType
+import uk.gov.hmcts.contino.AngularPipelineType
 
 def call(type, String product, String component, Closure body) {
 

@@ -8,6 +8,7 @@ class SpringBootPipelineType implements PipelineType, Serializable {
   Builder builder
 
   SpringBootPipelineType(steps, product, app) {
+    println("SpringBootPipelineType-cstr")
     this.steps = steps
     this.product = product
     this.app = app

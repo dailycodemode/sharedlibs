@@ -8,6 +8,7 @@ public class AngularPipelineType implements PipelineType, Serializable {
   Builder builder
 
   AngularPipelineType(steps, product, app) {
+    println("AngularPipelineType-cstr")
     this.steps = steps
     this.product = product
     this.app = app
