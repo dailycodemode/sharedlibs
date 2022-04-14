@@ -3,6 +3,8 @@ import uk.gov.hmcts.contino.ProjectBranch
 def call(type, String product, String component, Closure body) {
 
   println("withPipeline-call-START")
+  println("env.BRANCH_NAME:" + env.BRANCH_NAME)
+  
   def branch = new ProjectBranch(env.BRANCH_NAME)
 
   def deploymentNamespace = branch.deploymentNamespace()

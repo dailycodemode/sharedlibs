@@ -5,6 +5,7 @@ class ProjectBranch {
   String branchName
 
   ProjectBranch(String branchName) {
+      println("withPipeline-cstr")
     this.branchName = Objects.requireNonNull(branchName)
   }
 
