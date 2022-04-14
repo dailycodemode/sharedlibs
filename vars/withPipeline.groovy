@@ -8,6 +8,13 @@ def call(type, String product, String component, Closure body) {
   def deploymentNamespace = branch.deploymentNamespace()
   def deploymentProduct = deploymentNamespace ? "$deploymentNamespace-$product" : product
 
+  def pipelineTypes = [
+    java  : new SpringBootPipelineType(this, deploymentProduct, component),
+    nodejs: new NodePipelineType(this, deploymentProduct, component),
+    angular: new AngularPipelineType(this, deploymentProduct, component)
+  ]
+
+
   println("withPipeline-call-END")
 
 }
