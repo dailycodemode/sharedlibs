@@ -109,10 +109,10 @@ def call(type, String product, String component, Closure body) {
     //     }
       }
 
-      notifyBuildFixed channel: slackChannel
+    //   notifyBuildFixed channel: slackChannel
 
-      callbacksRunner.call('onSuccess')
-      metricsPublisher.publish('Pipeline Succeeded')
+    //   callbacksRunner.call('onSuccess')
+    //   metricsPublisher.publish('Pipeline Succeeded')
     }
   }
 
