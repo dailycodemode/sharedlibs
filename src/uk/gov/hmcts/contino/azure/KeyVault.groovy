@@ -9,16 +9,16 @@ class KeyVault extends Az implements Serializable {
   def steps
 
   KeyVault(steps, String vaultName) {
-    println("KeyVault-cstr1")
     this(steps, "jenkins", vaultName)
     this.steps = steps
+    println("KeyVault-cstr1")
   }
 
   KeyVault(steps, String subscription, String vaultName) {
     super(steps, subscription)
-    println("KeyVault-cstr2")
     this.vaultName = vaultName
     this.steps = steps
+    println("KeyVault-cstr2")
   }
 
   void store(String key, String value) {
