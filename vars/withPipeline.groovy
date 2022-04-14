@@ -13,6 +13,8 @@ import uk.gov.hmcts.contino.AppPipelineConfig
 import uk.gov.hmcts.contino.PipelineCallbacksConfig
 import uk.gov.hmcts.contino.PipelineCallbacksRunner
 
+import uk.gov.hmcts.contino.AppPipelineDsl
+
 def call(type, String product, String component, Closure body) {
 
   println("withPipeline-call-START")
@@ -48,7 +50,10 @@ def call(type, String product, String component, Closure body) {
   callbacks.registerAfterAll { stage ->
     metricsPublisher.publish(stage)
   }
-  
+
+  def dsl = new AppPipelineDsl(this, callbacks, pipelineConfig)
+  body.delegate = dsl
+
   println("withPipeline-call-END")
 
 }
