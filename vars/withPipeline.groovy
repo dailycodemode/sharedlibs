@@ -53,7 +53,12 @@ def call(type, String product, String component, Closure body) {
 
   def dsl = new AppPipelineDsl(this, callbacks, pipelineConfig)
   body.delegate = dsl
+  body.call() // register pipeline config
 
+  dsl.onStageFailure() {
+    currentBuild.result = "FAILURE"
+  }
+  
   println("withPipeline-call-END")
 
 }

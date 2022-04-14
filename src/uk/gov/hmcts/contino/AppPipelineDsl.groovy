@@ -12,35 +12,42 @@ class AppPipelineDsl extends CommonPipelineDsl implements Serializable {
   }
 
   void loadVaultSecrets(Map<String, List<Map<String, Object>>> vaultSecrets) {
+    println("AppPipelineDsl-loadVaultSecrets")
     config.vaultSecrets = vaultSecrets
   }
 
   void enableDbMigration(String dbMigrationVaultName) {
+    println("AppPipelineDsl-enableDbMigration")
     config.migrateDb = true
     config.dbMigrationVaultName = dbMigrationVaultName
   }
 
   void enablePerformanceTest(int timeout = 15) {
+    println("AppPipelineDsl-enablePerformanceTest")
     config.perfTestTimeout = timeout
     config.performanceTest = true
   }
 
   void enableApiGatewayTest(int timeout = 15) {
+    println("AppPipelineDsl-enableApiGatewayTest")
     config.apiGatewayTestTimeout = timeout
     config.apiGatewayTest = true
   }
 
   void enableCrossBrowserTest(int timeout = 120) {
+    println("AppPipelineDsl-enableCrossBrowserTest")
     config.crossBrowserTestTimeout = timeout
     config.crossBrowserTest = true
   }
 
   void enableCrossBrowserTest(List<String> browsers, int timeout = 120) {
+    println("AppPipelineDsl-enableCrossBrowserTest")
     config.crossBrowserTestTimeout = timeout
     config.parallelCrossBrowsers = browsers
   }
 
   void enableSecurityScan(int timeout = 120) {
+    println("AppPipelineDsl-enableSecurityScan")
     config.securityScanTimeout = timeout
     config.securityScan = true
   }
