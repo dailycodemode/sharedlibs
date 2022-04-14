@@ -14,6 +14,7 @@ class Environment implements Serializable {
   def final functionalTestEnvironments
 
   Environment(Object env) {
+    println("Environment-cstr")
     Objects.requireNonNull(env)
     org.codehaus.groovy.runtime.NullObject.metaClass.toString = {return ''}
 

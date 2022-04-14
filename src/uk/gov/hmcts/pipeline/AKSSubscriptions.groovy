@@ -14,6 +14,7 @@ class AKSSubscriptions {
   List<AKSSubscription> subscriptionList = new ArrayList<>();
 
   AKSSubscriptions(Object steps) {
+    println("AKSSubscriptions-cstr")
     Objects.requireNonNull(steps)
 
     def environment = new Environment(steps.env)

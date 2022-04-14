@@ -8,6 +8,7 @@ class AKSSubscription implements Serializable {
   def final keyvaultName
 
   AKSSubscription(Object steps, String name, String keyvaultName, String envName, String id) {
+    println("AKSSubscription-cstr")
     this.keyvaultName = keyvaultName
     this.steps = steps
     this.name = name
