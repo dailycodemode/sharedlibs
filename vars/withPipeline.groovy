@@ -17,7 +17,19 @@ def call(type, String product, String component, Closure body) {
     angular: new AngularPipelineType(this, deploymentProduct, component)
   ]
 
+  Subscription subscription = new Subscription(env)
+  AKSSubscriptions aksSubscriptions = new AKSSubscriptions(this)
 
+  PipelineType pipelineType
+
+  if (type instanceof PipelineType) {
+    pipelineType = type
+  } else {
+    pipelineType = pipelineTypes.get(type)
+  }
+
+  assert pipelineType != null
+  
   println("withPipeline-call-END")
 
 }
