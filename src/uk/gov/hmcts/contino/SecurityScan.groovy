@@ -9,7 +9,7 @@ class SecurityScan implements Serializable {
     def steps
 
     SecurityScan(steps) {
-        echo("SecurityScan-cstr123")
+        echo "SecurityScan-cstr123"
         println("SecurityScan-cstr")
         this.steps = steps
     }
