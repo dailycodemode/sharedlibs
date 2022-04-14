@@ -21,6 +21,7 @@ import uk.gov.hmcts.contino.Environment
 def call(type, String product, String component, Closure body) {
 
   println("withPipeline-call-START")
+  println("env.BRANCH_NAME: " + env.BRANCH_NAME)
   def branch = new ProjectBranch("master") //  env.BRANCH_NAME
 
   def deploymentNamespace = branch.deploymentNamespace()
