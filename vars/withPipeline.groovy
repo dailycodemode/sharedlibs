@@ -29,6 +29,9 @@ def call(type, String product, String component, Closure body) {
   }
 
   assert pipelineType != null
+
+  MetricsPublisher metricsPublisher = new MetricsPublisher(this, currentBuild, product, component, subscription.prodName )
+  def pipelineConfig = new AppPipelineConfig()
   
   println("withPipeline-call-END")
 
