@@ -1,4 +1,4 @@
-import uk.gov.hmcts.contino.azure.KeyVault
+// import uk.gov.hmcts.contino.azure.KeyVault
 
 def call() {
   println("dockerAgentSetup-call")
