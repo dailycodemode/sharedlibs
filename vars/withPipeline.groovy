@@ -14,6 +14,8 @@ import uk.gov.hmcts.contino.PipelineCallbacksConfig
 import uk.gov.hmcts.contino.PipelineCallbacksRunner
 
 import uk.gov.hmcts.contino.AppPipelineDsl
+import uk.gov.hmcts.contino.Environment
+
 
 def call(type, String product, String component, Closure body) {
 
@@ -58,7 +60,13 @@ def call(type, String product, String component, Closure body) {
   dsl.onStageFailure() {
     currentBuild.result = "FAILURE"
   }
-  
+
+  Environment environment = new Environment(env)
+
+  def teamConfig = new TeamConfig(this).setTeamConfigEnv(product)
+  String agentType = env.BUILD_AGENT_TYPE
+  println("agentType: " + agentType)
+
   println("withPipeline-call-END")
 
 }
