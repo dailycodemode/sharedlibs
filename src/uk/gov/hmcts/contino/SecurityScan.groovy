@@ -13,7 +13,7 @@ class SecurityScan implements Serializable {
         // sh "echo HelloMe"
         // script.echo("HelloMe")
         System.out.println("Invalid grid URL");
-        echo(message: "Hello123")
+        // echo(message: "Hello123")
         println("SecurityScan-cstr")
         this.steps = steps
     }
