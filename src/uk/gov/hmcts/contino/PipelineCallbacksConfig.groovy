@@ -30,6 +30,7 @@ class PipelineCallbacksConfig {
 
   void registerAfterAll(Closure body) {
     println("PipelineCallbacksConfig-registerAfterAll")
+    println(body)
     bodies.put('after:all', body)
   }
 }
