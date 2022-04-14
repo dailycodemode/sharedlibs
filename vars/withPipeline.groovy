@@ -15,7 +15,7 @@ import uk.gov.hmcts.contino.PipelineCallbacksRunner
 
 import uk.gov.hmcts.contino.AppPipelineDsl
 import uk.gov.hmcts.contino.Environment
-import uk.gov.hmcts.pipeline.TeamConfig 
+// import uk.gov.hmcts.pipeline.TeamConfig 
 
 
 def call(type, String product, String component, Closure body) {
@@ -64,7 +64,7 @@ def call(type, String product, String component, Closure body) {
 
   Environment environment = new Environment(env)
 
-  def teamConfig = new TeamConfig(this).setTeamConfigEnv(product)
+//   def teamConfig = new TeamConfig(this).setTeamConfigEnv(product)
   String agentType = env.BUILD_AGENT_TYPE
   println("agentType: " + agentType)
 
